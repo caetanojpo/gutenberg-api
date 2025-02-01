@@ -1,5 +1,5 @@
 import winston from "winston";
-import { appConfig } from "./config/config";
+import { env } from "./env";
 
 const levels = {
   error: 0,
@@ -35,7 +35,7 @@ const logFormat = winston.format.combine(
 );
 
 const logger = winston.createLogger({
-  level: appConfig.nodeEnv === "dev" ? "debug" : "info",
+  level: env.nodeEnv === "dev" ? "debug" : "info",
   levels,
   format: logFormat,
   transports: [

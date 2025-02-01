@@ -4,7 +4,7 @@ config();
 
 const isProd = process.env.NODE_ENV === "prod";
 
-export const appConfig = {
+export const env = {
   port: process.env.PORT || 8000,
   nodeEnv: process.env.NODE_ENV || "dev",
   logLevel: process.env.LOG_LEVEL || "info",

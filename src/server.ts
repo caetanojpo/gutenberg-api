@@ -1,10 +1,10 @@
 import app from "./index";
 import { gracefulShutdownDB } from "./config/db/mongo";
-import { appConfig } from "./config/config";
-import logger from "./logger";
+import { env } from "./config/env";
+import logger from "./config/logger";
 
-const server = app.listen(appConfig.port, () =>
-  logger.info(`Listening on port ${appConfig.port}`)
+const server = app.listen(env.port, () =>
+  logger.info(`Listening on port ${env.port}`)
 );
 
 const gracefulShutdown = async () => {

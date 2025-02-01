@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
-import { appConfig } from "../config";
-import logger from "../../logger";
+import { env } from "../env";
+import logger from "../logger";
 
 export const connectDB = async () => {
   try {
-    await mongoose.connect(appConfig.dbUri);
+    await mongoose.connect(env.dbUri);
     logger.info("Database connected successfully");
   } catch (error) {
     logger.error("Database connection failed:", error);
