@@ -15,4 +15,5 @@ export const env = {
   dbUser: process.env.DB_USER,
   dbPass: process.env.DB_PASS,
   url: isProd ? process.env.PROD_API_URL : process.env.DEV_API_URL,
+  jwtSecret: process.env.JWT_SECRET || "",
 };
