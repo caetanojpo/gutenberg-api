@@ -8,7 +8,7 @@ export class DeleteUser {
 
     if (!user || !user.isActive) throw new Error("This user doesn't exists");
 
-    return await this.repository.hardDelete(id);
+    return await this.repository.delete(id);
   }
 
   async executeSoft(id: string): Promise<void> {
