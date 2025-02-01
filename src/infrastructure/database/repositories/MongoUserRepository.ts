@@ -1,4 +1,4 @@
-import { UserModel } from "./../schemas/UserSchema";
+import { UserModel } from "../schemas/UserModel";
 import { IUserRepository } from "../../../domain/interfaces/IUserRepository";
 import { IUser } from "../../../domain/models/User";
 import { UserMapper } from "../../../utils/mappers/UserMapper";
