@@ -1,8 +1,9 @@
 export interface IUser {
-  id: string;
+  id?: string;
   username: string;
   email: string;
-  password: string;
+  hashedPassword: string;
+  isActive: boolean;
 }
 
 export class User implements IUser {
@@ -10,6 +11,7 @@ export class User implements IUser {
     public id: string,
     public username: string,
     public email: string,
-    public password: string
+    public hashedPassword: string,
+    public isActive: boolean
   ) {}
 }
