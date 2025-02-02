@@ -4,6 +4,6 @@ export class DatabaseException extends Error {
     public originalError?: Error
   ) {
     super(message);
-    this.name = "DatabaseError";
+    this.name = "DatabaseException";
   }
 }

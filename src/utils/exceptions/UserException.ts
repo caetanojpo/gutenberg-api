@@ -4,6 +4,6 @@ export class UserException extends Error {
     public originalError?: Error
   ) {
     super(message);
-    this.name = "UserError";
+    this.name = "UserException";
   }
 }
