@@ -3,7 +3,7 @@ export interface IUser {
   username: string;
   email: string;
   hashedPassword: string;
-  isActive: boolean;
+  isActive?: boolean;
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -13,7 +13,7 @@ export class User implements IUser {
   username: string;
   email: string;
   hashedPassword: string;
-  isActive: boolean;
+  isActive?: boolean;
   createdAt?: Date;
   updatedAt?: Date;
 
@@ -23,10 +23,5 @@ export class User implements IUser {
       (this.email = user.email),
       (this.hashedPassword = user.hashedPassword),
       (this.isActive = true);
-  }
-
-  validateEmail(): boolean {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(this.email);
   }
 }

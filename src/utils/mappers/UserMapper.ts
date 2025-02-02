@@ -14,42 +14,38 @@ export class UserMapper {
     };
   }
 
-  static async toUserFromUserSchema(userSchema: any): Promise<User> {
-    return plainToInstance(User, {
+  static toUserFromUserSchema(userSchema: any): User {
+    return {
       id: userSchema._id.toString(),
       username: userSchema.username,
       email: userSchema.email,
       hashedPassword: userSchema.hashedPassword,
       isActive: userSchema.isActive,
-    });
+    };
   }
 
-  static async toUserFromCreateDto(
-    createUserDTO: CreateUserDTO
-  ): Promise<IUser> {
-    return plainToInstance(User, {
+  static toUserFromCreateDto(createUserDTO: CreateUserDTO): IUser {
+    return {
       username: createUserDTO.username,
       email: createUserDTO.email,
       hashedPassword: createUserDTO.password,
-    });
+    };
   }
 
-  static async toUserFromUpdateDto(
-    updateUserDTO: UpdateUserDTO
-  ): Promise<IUser> {
-    return plainToInstance(User, {
+  static toUserFromUpdateDto(updateUserDTO: UpdateUserDTO): IUser {
+    return {
       username: updateUserDTO.username,
       email: updateUserDTO.email,
       hashedPassword: updateUserDTO.password,
-    });
+    };
   }
 
-  static toGetUserDTOFromuser(user: IUser): GetUserDTO {
-    return plainToInstance(GetUserDTO, {
-      id: user.id,
+  static toGetUserDTOFromUser(user: IUser): GetUserDTO {
+    return {
+      id: user.id || "",
       username: user.username,
       email: user.email,
-      isActive: user.isActive,
-    });
+      isActive: user.isActive || false,
+    };
   }
 }
