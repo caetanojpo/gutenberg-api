@@ -1,6 +1,6 @@
 import { UserModel } from "../schemas/UserModel";
 import { IUserRepository } from "../../../domain/interfaces/user/IUserRepository";
-import { UserMapper } from "../../../utils/mappers/UserMapper";
+import { UserMapper } from "../../mappers/UserMapper";
 import { DatabaseException } from "../../../domain/exceptions/DatabaseException";
 import { EntityNotFoundException } from "../../../domain/exceptions/EntityNotFoundException";
 import { logger } from "../../logger";

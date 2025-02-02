@@ -4,7 +4,7 @@ import { IAuthService } from "../../../domain/interfaces/auth/IAuthService";
 import { IUserRepository } from "../../../domain/interfaces/user/IUserRepository";
 import { UserException } from "../../../domain/exceptions/UserException";
 import { LoggerMessages } from "../../../utils/helpers/LoggerMessages";
-import { UserMapper } from "../../../utils/mappers/UserMapper";
+import { UserMapper } from "../../../infrastructure/mappers/UserMapper";
 
 export class UpdateUser {
   constructor(

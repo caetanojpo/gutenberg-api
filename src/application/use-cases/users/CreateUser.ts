@@ -6,7 +6,7 @@ import { IUser } from "../../../domain/models/User";
 import { DatabaseException } from "../../../domain/exceptions/DatabaseException";
 import { EntityAlreadyExistsException } from "../../../domain/exceptions/EntityAlreadyExistsException";
 import { LoggerMessages } from "../../../utils/helpers/LoggerMessages";
-import { UserMapper } from "../../../utils/mappers/UserMapper";
+import { UserMapper } from "../../../infrastructure/mappers/UserMapper";
 
 export class CreateUser {
   constructor(

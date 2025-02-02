@@ -5,7 +5,7 @@ import { UpdateUser } from "../../application/use-cases/users/UpdateUser";
 import { Request, Response as ExpressResponse } from "express";
 import { UserException } from "../../domain/exceptions/UserException";
 import { CreateUserDTO } from "../../domain/dtos/User/CreateUserDTO";
-import { UserMapper } from "../../utils/mappers/UserMapper";
+import { UserMapper } from "../../infrastructure/mappers/UserMapper";
 import { UpdateUserDTO } from "../../domain/dtos/User/UpdateUserDTO";
 import { Response } from "../../utils/helpers/Response";
 import { logger } from "../../infrastructure/logger";
