@@ -1,8 +1,8 @@
 import { UserModel } from "../schemas/UserModel";
 import { IUserRepository } from "../../../domain/interfaces/IUserRepository";
 import { UserMapper } from "../../../utils/mappers/UserMapper";
-import { DatabaseException } from "../../../utils/exceptions/DatabaseException";
-import { EntityNotFoundException } from "../../../utils/exceptions/EntityNotFoundException";
+import { DatabaseException } from "../../../domain/exceptions/DatabaseException";
+import { EntityNotFoundException } from "../../../domain/exceptions/EntityNotFoundException";
 import { logger } from "../../logger";
 import { IUser } from "./../../../domain/models/User";
 import { LoggerMessages } from "../../../utils/helpers/LoggerMessages";

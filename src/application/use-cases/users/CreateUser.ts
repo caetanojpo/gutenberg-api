@@ -3,8 +3,8 @@ import { CreateUserDTO } from "../../../domain/dtos/User/CreateUserDTO";
 import { IAuthService } from "../../../domain/interfaces/IAuthService";
 import { IUserRepository } from "../../../domain/interfaces/IUserRepository";
 import { IUser } from "../../../domain/models/User";
-import { DatabaseException } from "../../../utils/exceptions/DatabaseException";
-import { EntityAlreadyExistsException } from "../../../utils/exceptions/EntityAlreadyExistsException";
+import { DatabaseException } from "../../../domain/exceptions/DatabaseException";
+import { EntityAlreadyExistsException } from "../../../domain/exceptions/EntityAlreadyExistsException";
 import { LoggerMessages } from "../../../utils/helpers/LoggerMessages";
 import { UserMapper } from "../../../utils/mappers/UserMapper";
 

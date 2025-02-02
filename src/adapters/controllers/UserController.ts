@@ -3,7 +3,7 @@ import { DeleteUser } from "../../application/use-cases/users/DeleteUser";
 import { FindUser } from "../../application/use-cases/users/FindUser";
 import { UpdateUser } from "../../application/use-cases/users/UpdateUser";
 import { Request, Response as ExpressResponse } from "express";
-import { UserException } from "../../utils/exceptions/UserException";
+import { UserException } from "../../domain/exceptions/UserException";
 import { CreateUserDTO } from "../../domain/dtos/User/CreateUserDTO";
 import { UserMapper } from "../../utils/mappers/UserMapper";
 import { UpdateUserDTO } from "../../domain/dtos/User/UpdateUserDTO";

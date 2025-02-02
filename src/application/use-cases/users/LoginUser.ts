@@ -1,7 +1,7 @@
 import { logger } from "../../../infrastructure/logger";
 import { IAuthService } from "../../../domain/interfaces/IAuthService";
 import { IUserRepository } from "../../../domain/interfaces/IUserRepository";
-import { UserException } from "../../../utils/exceptions/UserException";
+import { UserException } from "../../../domain/exceptions/UserException";
 import { LoggerMessages } from "../../../utils/helpers/LoggerMessages";
 
 export class LoginUser {

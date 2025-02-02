@@ -1,6 +1,6 @@
 import { Request, Response as ExpressResponse } from "express";
 import { LoginUser } from "../../application/use-cases/users/LoginUser";
-import { UserException } from "../../utils/exceptions/UserException";
+import { UserException } from "../../domain/exceptions/UserException";
 import { logger } from "../../infrastructure/logger";
 import { Response } from "../../utils/helpers/Response";
 import { plainToInstance } from "class-transformer";
