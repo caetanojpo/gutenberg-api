@@ -3,8 +3,8 @@ import { CreateUserDTO } from "../../domain/dtos/User/CreateUserDTO";
 import { GetUserDTO } from "../../domain/dtos/User/GetUserDTO";
 import { UpdateUserDTO } from "../../domain/dtos/User/UpdateUserDTO";
 import { LoginResponseDTO } from "../../domain/dtos/Auth/LoginResponseDTO";
-import { logger } from "../../infrastructure/logger";
-import { LoggerMessages } from "../helpers/LoggerMessages";
+import { logger } from "../logger";
+import { LoggerMessages } from "../../utils/helpers/LoggerMessages";
 
 export class UserMapper {
   static toUserSchemaFromUser(user: IUser): any {
