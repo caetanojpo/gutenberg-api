@@ -11,9 +11,9 @@ export const env = {
   allowedOrigins: process.env.ALLOWED_ORIGINS || "*",
   projectGutenbergBaseUrl:
     process.env.GUTENBERG_BASE_URL || "https://www.gutenberg.org",
-  dbUri: process.env.DB_URI || "mongodb://localhost:27017/gutenberg",
-  dbUser: process.env.DB_USER,
-  dbPass: process.env.DB_PASS,
+  dbUser: process.env.DB_USER || "root",
+  dbPass: process.env.DB_PASS || "adm123",
+  dbUri: process.env.DB_URI || "mongodb://localhost:27017",
   url: isProd ? process.env.PROD_API_URL : process.env.DEV_API_URL,
   jwtSecret: process.env.JWT_SECRET || "",
 };
