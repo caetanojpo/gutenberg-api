@@ -1,20 +1,20 @@
 export interface IBook {
-  id?: string;
+  id: string;
   title: string;
   author: string;
   coverPictureUrl: string;
-  content: string;
+  content?: string;
   metadata: string;
   createdAt?: Date;
   updatedAt?: Date;
 }
 
 export class Book implements IBook {
-  id?: string;
+  id: string;
   title: string;
   author: string;
   coverPictureUrl: string;
-  content: string;
+  content?: string;
   metadata: string;
   createdAt?: Date;
   updatedAt?: Date;
