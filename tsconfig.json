@@ -14,8 +14,10 @@
     "strictPropertyInitialization": true,
     "strictNullChecks": true,
     "allowJs": false,
-    "sourceMap": true
+    "sourceMap": true,
+    "typeRoots": ["./node_modules/@types", "./src/@types"]
   },
   "include": ["src"],
+  "files": ["src/@types/express/index.d.ts"],
   "exclude": ["node_modules", "dist"]
 }
