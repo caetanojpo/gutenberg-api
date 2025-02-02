@@ -3,6 +3,7 @@ import bcrypt from "bcryptjs";
 import { env } from "../../config/env";
 import { IAuthService } from "../../domain/interfaces/IAuthService";
 import { IUser } from "../../domain/models/User";
+import logger from "../../config/logger";
 
 export class AuthService implements IAuthService {
   async hashPassword(password: string): Promise<string> {
@@ -17,6 +18,10 @@ export class AuthService implements IAuthService {
   }
 
   generateToken(user: IUser): string {
+    logger.info(
+      "Generating token with id: " + user.id,
+      " and email: " + user.email
+    );
     return jwt.sign({ id: user.id, email: user.email }, env.jwtSecret, {
       expiresIn: "1h",
     });
