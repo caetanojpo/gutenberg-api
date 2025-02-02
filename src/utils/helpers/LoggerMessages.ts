@@ -52,6 +52,23 @@ export abstract class LoggerMessages {
     "Mapping LoginResponseDTO for user ID: {}";
   public static readonly USER_MAPPED = "User mapped successfully";
 
+  // Book Mapping
+  public static readonly MAPPING_IBOOK_TO_BOOK_SCHEMA =
+    "Mapping IBook to BookSchema for id: {}";
+  public static readonly MAPPING_BOOK_SCHEMA_TO_IBOOK =
+    "Mapping BookSchema to IBook for id: {}";
+  public static readonly MAPPING_CREATE_BOOK_DTO_TO_IBOOK =
+    "Mapping CreateBookDTO to IBook for id: {}";
+  public static readonly MAPPING_UPDATE_BOOK_DTO_TO_IBOOK =
+    "Mapping UpdateBookDTO to IBook for id: {}";
+  public static readonly MAPPING_IBOOK_TO_GET_BOOK_DTO =
+    "Mapping IBook to GetBookDTO for book: {}";
+  public static readonly MAPPING_IBOOK_TO_GET_BOOK_CONTENT_DTO =
+    "Mapping IBook to GetBookContentDTO for book: {}";
+  public static readonly MAPPING_IBOOK_TO_GET_BOOK_METADATA_DTO =
+    "Mapping IBook to GetBookMetadataDTO for book: {}";
+  public static readonly BOOK_MAPPED = "Book mapped successfully";
+
   // Authentication
   public static readonly LOGIN_ATTEMPT = "User attempting to log in: {}";
   public static readonly LOGIN_SUCCESS = "User logged in successfully: {}";
