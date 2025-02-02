@@ -1,7 +1,7 @@
 import { logger } from "../../../infrastructure/logger";
 import { CreateUserDTO } from "../../../domain/dtos/User/CreateUserDTO";
-import { IAuthService } from "../../../domain/interfaces/IAuthService";
-import { IUserRepository } from "../../../domain/interfaces/IUserRepository";
+import { IAuthService } from "../../../domain/interfaces/auth/IAuthService";
+import { IUserRepository } from "../../../domain/interfaces/user/IUserRepository";
 import { IUser } from "../../../domain/models/User";
 import { DatabaseException } from "../../../domain/exceptions/DatabaseException";
 import { EntityAlreadyExistsException } from "../../../domain/exceptions/EntityAlreadyExistsException";

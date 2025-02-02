@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import { env } from "../env";
-import { IAuthService } from "../../domain/interfaces/IAuthService";
+import { IAuthService } from "../../domain/interfaces/auth/IAuthService";
 import { IUser } from "../../domain/models/User";
 import { logger } from "../logger";
 import { LoggerMessages } from "../../utils/helpers/LoggerMessages";

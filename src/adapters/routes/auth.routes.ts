@@ -1,8 +1,8 @@
 import { Router } from "express";
 import { AuthController } from "../controllers/AuthController";
 import { LoginUser } from "../../application/use-cases/users/LoginUser";
-import { IUserRepository } from "../../domain/interfaces/IUserRepository";
-import { IAuthService } from "../../domain/interfaces/IAuthService";
+import { IUserRepository } from "../../domain/interfaces/user/IUserRepository";
+import { IAuthService } from "../../domain/interfaces/auth/IAuthService";
 import { AuthService } from "../../infrastructure/services/AuthService";
 import { MongoUserRepository } from "../../infrastructure/database/repositories/MongoUserRepository";
 
