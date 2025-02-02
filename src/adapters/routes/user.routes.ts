@@ -6,6 +6,7 @@ import { FindUser } from "../../application/use-cases/users/FindUser";
 import { UpdateUser } from "../../application/use-cases/users/UpdateUser";
 import { MongoUserRepository } from "../../infrastructure/database/repositories/MongoUserRepository";
 import { AuthService } from "../../infrastructure/services/AuthService";
+import { authMiddleware } from "../middleware/AuthMiddleware";
 
 const userRouter = express.Router();
 
@@ -20,20 +21,31 @@ const userController = new UserController(
   createUser,
   findUser,
   deleteUser,
-  updateUser
+  updateUser,
+  authService
 );
 
 userRouter.post("", (req, res) => userController.createUser(req, res));
-userRouter.get("/:id", (req, res) => userController.getUserById(req, res));
-userRouter.get("/email/:email", (req, res) =>
-  userController.getUserByEmail(req, res)
+userRouter.get("/:id", authMiddleware(authService, findUser), (req, res) =>
+  userController.getUserById(req, res)
 );
-userRouter.put("/:id", (req, res) => userController.updateUser(req, res));
-userRouter.delete("/soft/:id", (req, res) =>
-  userController.softDeleteUser(req, res)
+userRouter.get(
+  "/email/:email",
+  authMiddleware(authService, findUser),
+  (req, res) => userController.getUserByEmail(req, res)
 );
-userRouter.delete("/hard/:id", (req, res) =>
-  userController.hardDeleteUser(req, res)
+userRouter.put("/:id", authMiddleware(authService, findUser), (req, res) =>
+  userController.updateUser(req, res)
+);
+userRouter.delete(
+  "/soft/:id",
+  authMiddleware(authService, findUser),
+  (req, res) => userController.softDeleteUser(req, res)
+);
+userRouter.delete(
+  "/hard/:id",
+  authMiddleware(authService, findUser),
+  (req, res) => userController.hardDeleteUser(req, res)
 );
 
 export default userRouter;
