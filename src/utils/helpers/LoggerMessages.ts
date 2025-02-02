@@ -87,15 +87,31 @@ export abstract class LoggerMessages {
   public static readonly DELETING_USER = "Deleting user with id: {}";
   public static readonly USER_DELETED = "User deleted successfully with id: {}";
 
+  // Book Operations (MongoBookRepository)
+  public static readonly FINDING_BOOK_BY_ID = "Finding book by id: {}";
+  public static readonly BOOK_NOT_FOUND_BY_ID = "Book not found with id: {}";
+  public static readonly BOOK_FOUND_BY_ID = "Book found with id: {}";
+  public static readonly FINDING_ALL_BOOKS = "Finding all books";
+  public static readonly FINDING_ALL_BOOKS_EMPTY =
+    "Found 0 books. Empty entity.";
+  public static readonly ALL_BOOKS_FOUND = "All books found";
+  public static readonly FINDING_ALL_BOOKS_BY_AUTHOR =
+    "Finding all books by author: {}";
+  public static readonly ALL_BOOKS_FOUND_BY_AUTHOR =
+    "All books found by author: {}";
+  public static readonly SAVING_BOOK =
+    "Saving book to the database with email: {}";
+  public static readonly BOOK_SAVED = "Book saved successfully: {}";
+  public static readonly UPDATING_BOOK = "Updating book with id: {}";
+  public static readonly BOOK_UPDATED = "Book updated successfully with id: {}";
+  public static readonly DELETING_BOOK = "Deleting book with id: {}";
+  public static readonly BOOK_DELETED = "Book deleted successfully with id: {}";
+
   // Database Error Messages (MongoUserRepository)
-  public static readonly DB_ERROR_FINDING_USER =
-    "Error finding user in MongoDB: {}";
-  public static readonly DB_ERROR_SAVING_USER =
-    "Error saving user to MongoDB: {}";
-  public static readonly DB_ERROR_UPDATING_USER =
-    "Error updating user in MongoDB: {}";
-  public static readonly DB_ERROR_DELETING_USER =
-    "Error deleting user from MongoDB: {}";
+  public static readonly DB_ERROR_FINDING = "Error finding in MongoDB: {}";
+  public static readonly DB_ERROR_SAVING = "Error saving to MongoDB: {}";
+  public static readonly DB_ERROR_UPDATING = "Error updating in MongoDB: {}";
+  public static readonly DB_ERROR_DELETING = "Error deleting from MongoDB: {}";
   public static readonly ENTITY_NOT_FOUND =
     "Entity not found in MongoDB: {} with id: {}";
 

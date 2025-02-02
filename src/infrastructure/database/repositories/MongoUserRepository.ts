@@ -26,7 +26,7 @@ export class MongoUserRepository implements IUserRepository {
       logger.logFormatted("info", LoggerMessages.USER_FOUND_BY_ID, id);
       return UserMapper.toUserFromUserSchema(userDocument);
     } catch (error) {
-      logger.logFormatted("error", LoggerMessages.DB_ERROR_FINDING_USER, error);
+      logger.logFormatted("error", LoggerMessages.DB_ERROR_FINDING, error);
       throw new DatabaseException(
         "MongoDB error when trying to find user by id: " + error
       );
@@ -52,7 +52,7 @@ export class MongoUserRepository implements IUserRepository {
       logger.logFormatted("info", LoggerMessages.USER_MAPPED);
       return mappedUser;
     } catch (error) {
-      logger.logFormatted("error", LoggerMessages.DB_ERROR_FINDING_USER, error);
+      logger.logFormatted("error", LoggerMessages.DB_ERROR_FINDING, error);
       throw new DatabaseException(
         "MongoDB error when trying to find user by email: " + error
       );
@@ -67,7 +67,7 @@ export class MongoUserRepository implements IUserRepository {
       logger.logFormatted("info", LoggerMessages.USER_SAVED, user.email);
       return createdUser;
     } catch (error) {
-      logger.logFormatted("error", LoggerMessages.DB_ERROR_SAVING_USER, error);
+      logger.logFormatted("error", LoggerMessages.DB_ERROR_SAVING, error);
       throw new DatabaseException(
         "MongoDB error when trying to save user: " + error
       );
@@ -94,11 +94,7 @@ export class MongoUserRepository implements IUserRepository {
       logger.logFormatted("info", LoggerMessages.USER_UPDATED, id);
       return;
     } catch (error) {
-      logger.logFormatted(
-        "error",
-        LoggerMessages.DB_ERROR_UPDATING_USER,
-        error
-      );
+      logger.logFormatted("error", LoggerMessages.DB_ERROR_UPDATING, error);
       throw new DatabaseException(
         "MongoDB error when trying to update user: " + error
       );
@@ -122,11 +118,7 @@ export class MongoUserRepository implements IUserRepository {
 
       logger.logFormatted("info", LoggerMessages.USER_DELETED, id);
     } catch (error) {
-      logger.logFormatted(
-        "error",
-        LoggerMessages.DB_ERROR_DELETING_USER,
-        error
-      );
+      logger.logFormatted("error", LoggerMessages.DB_ERROR_DELETING, error);
       throw new DatabaseException(
         "MongoDB error when trying to delete user: " + error
       );
