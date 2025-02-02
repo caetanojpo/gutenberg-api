@@ -17,7 +17,6 @@ export class DeleteUser {
     if (!user || !user.isActive) throw new Error("This user doesn't exists");
 
     user.isActive = false;
-
     return await this.repository.update(id, user);
   }
 }

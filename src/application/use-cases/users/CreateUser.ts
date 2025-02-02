@@ -1,8 +1,11 @@
-import logger from "../../../config/logger";
-import { CreateUserDTO } from "../../../domain/dtos/CreateUserDTO";
+import { logger } from "../../../infrastructure/logger";
+import { CreateUserDTO } from "../../../domain/dtos/User/CreateUserDTO";
 import { IAuthService } from "../../../domain/interfaces/IAuthService";
 import { IUserRepository } from "../../../domain/interfaces/IUserRepository";
-import { UserException } from "../../../utils/exceptions/UserException";
+import { IUser } from "../../../domain/models/User";
+import { DatabaseException } from "../../../utils/exceptions/DatabaseException";
+import { EntityAlreadyExistsException } from "../../../utils/exceptions/EntityAlreadyExistsException";
+import { LoggerMessages } from "../../../utils/helpers/LoggerMessages";
 import { UserMapper } from "../../../utils/mappers/UserMapper";
 
 export class CreateUser {
@@ -11,31 +14,32 @@ export class CreateUser {
     private auth: IAuthService
   ) {}
 
-  async execute(userDto: CreateUserDTO): Promise<void> {
+  async execute(userDto: CreateUserDTO): Promise<IUser | null> {
     try {
-      logger.info("Checking if user exists with email: " + userDto.email);
       const existingUser = await this.repository.findByEmail(userDto.email);
 
       if (existingUser) {
-        logger.error("User already exists with email: " + userDto.email);
-        throw new Error("User already exists");
+        logger.logFormatted(
+          "warn",
+          LoggerMessages.ENTITY_CONFLICT,
+          userDto.email
+        );
+        throw new EntityAlreadyExistsException("User already exists");
       }
 
-      logger.info("Hashing password for user: " + userDto.email);
       userDto.password = await this.auth.hashPassword(userDto.password);
+      logger.logFormatted("info", LoggerMessages.HASHED_PASSWORD);
 
-      logger.info("Mapping user DTO to user entity: " + userDto.email);
       const user = await UserMapper.toUserFromCreateDto(userDto);
-      logger.info("User Mapped " + userDto.email);
+      logger.logFormatted("info", LoggerMessages.USER_MAPPED);
 
-      logger.info("Saving user to database: " + userDto.email);
-      await this.repository.save(user);
-
-      logger.info("User created successfully: " + userDto.email);
-      return;
+      const createdUser = await this.repository.save(user);
+      return createdUser;
     } catch (error) {
-      logger.error("Error in CreateUser use case: " + error);
-      throw error;
+      if (error instanceof EntityAlreadyExistsException) {
+        throw error;
+      }
+      throw new DatabaseException("Error creating user: " + error);
     }
   }
 }
