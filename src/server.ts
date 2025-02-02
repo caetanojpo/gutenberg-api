@@ -1,19 +1,21 @@
 import app from "./index";
-import { gracefulShutdownDB } from "./config/db/mongo";
-import { env } from "./config/env";
-import logger from "./config/logger";
+import { gracefulShutdownDB } from "./infrastructure/database/mongo";
+import { env } from "./infrastructure/env";
+
+import { LoggerMessages } from "./utils/helpers/LoggerMessages";
+import { logger } from "./infrastructure/logger";
 
 const server = app.listen(env.port, () =>
-  logger.info(`Listening on port ${env.port}`)
+  logger.logFormatted("info", LoggerMessages.SERVER_LISTENING, env.port)
 );
 
 const gracefulShutdown = async () => {
-  logger.info("Graceful Shutdown initiated...");
+  logger.logFormatted("info", LoggerMessages.GRACEFUL_SHUTDOWN);
 
   await gracefulShutdownDB();
 
   server.close(() => {
-    logger.info("Server stopped gracefully.");
+    logger.logFormatted("info", LoggerMessages.SERVER_STOPPED);
     process.exit(0);
   });
 };
@@ -22,10 +24,20 @@ process.on("SIGINT", gracefulShutdown);
 process.on("SIGTERM", gracefulShutdown);
 
 process.on("unhandledRejection", (reason, promise) => {
-  logger.error(`Unhandled Rejection at: ${promise}, reason: ${reason}`);
+  logger.logFormatted(
+    "error",
+    LoggerMessages.UNHANDLED_REJECTION,
+    promise,
+    reason
+  );
 });
 
 process.on("uncaughtException", (error) => {
-  logger.error(`Uncaught Exception: ${error.message}`, error);
+  logger.logFormatted(
+    "error",
+    LoggerMessages.UNCAUGHT_EXCEPTION,
+    error.message,
+    error
+  );
   process.exit(1);
 });
