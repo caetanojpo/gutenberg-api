@@ -15,6 +15,7 @@ const MetadataSchema = new Schema<IMetadata>(
 
 const BookSchema = new Schema<IBook>(
   {
+    gutenbergId: { type: String, unique: true, required: true },
     title: { type: String, required: true },
     author: { type: String, required: true },
     coverPictureUrl: { type: String, required: true },

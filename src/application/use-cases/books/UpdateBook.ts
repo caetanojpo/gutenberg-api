@@ -1,5 +1,5 @@
 import { UpdateBookContentDTO } from "../../../domain/dtos/Book/UpdateBookContentDTO";
-import { UpdateBookMetadataDTO } from "../../../domain/dtos/Book/UpdateBookMetadata";
+import { UpdateBookMetadataDTO } from "../../../domain/dtos/Book/UpdateBookMetadataDTO";
 import { BookException } from "../../../domain/exceptions/BookException";
 import { IBookRepository } from "../../../domain/interfaces/book/IBookRepository";
 

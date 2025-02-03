@@ -14,7 +14,7 @@ import { BookMapper } from "../../infrastructure/mappers/BookMapper";
 import { GetBookContentDTO } from "../../domain/dtos/Book/GetBookContentDTO";
 import { GetBookDTO } from "../../domain/dtos/Book/GetBookDTO";
 import { UpdateBookContentDTO } from "../../domain/dtos/Book/UpdateBookContentDTO";
-import { UpdateBookMetadataDTO } from "../../domain/dtos/Book/UpdateBookMetadata";
+import { UpdateBookMetadataDTO } from "../../domain/dtos/Book/UpdateBookMetadataDTO";
 
 export class BookController {
   constructor(
@@ -28,7 +28,7 @@ export class BookController {
     const bookData = plainToInstance(CreateBookDTO, req.body as object);
     logger.logFormatted(
       "info",
-      LoggerMessages.START_BOOK_CREATION,
+      LoggerMessages.START_BOOK_FIND_BY_GUTENBERG_ID,
       bookData.gutenbergId
     );
     const errors = await validate(bookData);
@@ -124,15 +124,15 @@ export class BookController {
     try {
       const books = await this.findCase.execute();
 
-      var getBookDTO: GetBookDTO[];
+      const getBooksDTO: GetBookDTO[] = [];
 
       if (books.length > 0) {
         books.forEach((b) => {
-          getBookDTO.push(BookMapper.toGetBookDTOFromBook(b));
+          getBooksDTO.push(BookMapper.toGetBookDTOFromBook(b));
         });
       }
 
-      return Response.success("Books found", books).send(res);
+      return Response.success("Books found", getBooksDTO).send(res);
     } catch (error) {
       if (error instanceof BookException) {
         return Response.error(
@@ -161,15 +161,15 @@ export class BookController {
     try {
       const books = await this.findCase.executeAllByAuthor(author);
 
-      var getBookDTO: GetBookDTO[];
+      const getBooksDto: GetBookDTO[] = [];
 
       if (books.length > 0) {
         books.forEach((b) => {
-          getBookDTO.push(BookMapper.toGetBookDTOFromBook(b));
+          getBooksDto.push(BookMapper.toGetBookDTOFromBook(b));
         });
       }
 
-      return Response.success("Books found", books).send(res);
+      return Response.success("Books found", getBooksDto).send(res);
     } catch (error) {
       if (error instanceof BookException) {
         return Response.error(
@@ -237,13 +237,11 @@ export class BookController {
     logger.logFormatted("info", LoggerMessages.START_BOOK_DELETE, bookId);
     try {
       await this.deleteCase.execute(bookId);
-      return Response.success("Book soft deleted successfully", null, 204).send(
-        res
-      );
+      return Response.success("Book deleted successfully", null, 204).send(res);
     } catch (error) {
       if (error instanceof BookException) {
         return Response.error(
-          "Failed to soft delete book: " + error.message,
+          "Failed to delete book: " + error.message,
           400
         ).send(res);
       } else {

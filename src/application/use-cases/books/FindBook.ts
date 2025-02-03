@@ -1,11 +1,13 @@
 import { IBookRepository } from "../../../domain/interfaces/book/IBookRepository";
 import { IBook } from "../../../domain/models/Book";
+import { logger } from "../../../infrastructure/logger";
 
 export class FindBook {
   constructor(private repository: IBookRepository) {}
 
   async execute(): Promise<IBook[] | []> {
     const book = await this.repository.findAll();
+    logger.info(`Books count: ${book.length}`);
     return book;
   }
 

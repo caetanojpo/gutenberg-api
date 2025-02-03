@@ -31,27 +31,39 @@ const bookController = new BookController(
 bookRouter.post("", authMiddleware(authService, findUser), (req, res) =>
   bookController.createBook(req, res)
 );
+
 bookRouter.get("/:id", authMiddleware(authService, findUser), (req, res) =>
   bookController.getBookById(req, res)
 );
+
+bookRouter.get(
+  "/gutenberg/:gutenbergId",
+  authMiddleware(authService, findUser),
+  (req, res) => bookController.getBookByGutenbergId(req, res)
+);
+
 bookRouter.get("/", authMiddleware(authService, findUser), (req, res) =>
   bookController.getAllBooks(req, res)
 );
+
 bookRouter.get(
   "/author/:author",
   authMiddleware(authService, findUser),
   (req, res) => bookController.getAllBooksByAuthor(req, res)
 );
-bookRouter.put(
+
+bookRouter.patch(
   "/content/:id",
   authMiddleware(authService, findUser),
   (req, res) => bookController.updateBookContent(req, res)
 );
-bookRouter.put(
+
+bookRouter.patch(
   "/metadata/:id",
   authMiddleware(authService, findUser),
   (req, res) => bookController.updateBookMetadata(req, res)
 );
+
 bookRouter.delete("/:id", authMiddleware(authService, findUser), (req, res) =>
   bookController.deleteBook(req, res)
 );
