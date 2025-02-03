@@ -12,10 +12,16 @@ export class CreateBook {
 
   async execute(bookDto: CreateBookDTO): Promise<IBook | null> {
     try {
-      const existingBook = await this.repository.findById(bookDto.id);
+      const existingBook = await this.repository.findByGutenbergId(
+        bookDto.gutenbergId
+      );
 
       if (existingBook) {
-        logger.logFormatted("warn", LoggerMessages.ENTITY_CONFLICT, bookDto.id);
+        logger.logFormatted(
+          "warn",
+          LoggerMessages.ENTITY_CONFLICT,
+          bookDto.gutenbergId
+        );
         throw new EntityAlreadyExistsException("Book already exists");
       }
 

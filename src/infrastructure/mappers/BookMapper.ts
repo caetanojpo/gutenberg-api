@@ -15,6 +15,7 @@ export class BookMapper {
     );
     return {
       id: book.id,
+      gutenbergId: book.gutenbergId,
       title: book.title,
       author: book.author,
       coverPictureUrl: book.coverPictureUrl,
@@ -31,6 +32,7 @@ export class BookMapper {
     );
     return {
       id: bookSchema.id,
+      gutenbergId: bookSchema.gutenbergId,
       title: bookSchema.title,
       author: bookSchema.author,
       coverPictureUrl: bookSchema.coverPictureUrl,
@@ -43,10 +45,10 @@ export class BookMapper {
     logger.logFormatted(
       "info",
       LoggerMessages.MAPPING_CREATE_BOOK_DTO_TO_IBOOK,
-      createBookDTO.id
+      createBookDTO.gutenbergId
     );
     return {
-      id: createBookDTO.id,
+      gutenbergId: createBookDTO.gutenbergId,
       title: createBookDTO.title,
       author: createBookDTO.author,
       coverPictureUrl: createBookDTO.coverPictureUrl,
@@ -61,7 +63,8 @@ export class BookMapper {
       book.id
     );
     return {
-      id: book.id,
+      id: book.id || "",
+      gutenbergId: book.gutenbergId,
       title: book.title,
       author: book.author,
       coverPictureUrl: book.coverPictureUrl,

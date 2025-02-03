@@ -29,7 +29,7 @@ export class BookController {
     logger.logFormatted(
       "info",
       LoggerMessages.START_BOOK_CREATION,
-      bookData.id
+      bookData.gutenbergId
     );
     const errors = await validate(bookData);
 
@@ -88,12 +88,43 @@ export class BookController {
     }
   }
 
+  async getBookByGutenbergId(
+    req: Request,
+    res: ExpressResponse
+  ): Promise<void> {
+    const bookId = req.params.gutenbergId;
+    logger.logFormatted(
+      "info",
+      LoggerMessages.START_BOOK_FIND_BY_GUTENBERG_ID,
+      bookId
+    );
+    try {
+      const book = await this.findCase.executeByGutenbergId(bookId);
+
+      if (!book) {
+        return Response.error("Book not found", 404).send(res);
+      }
+
+      const getBookDTO = BookMapper.toGetBookDTOFromBook(book);
+      return Response.success("Book found", getBookDTO, 200).send(res);
+    } catch (error) {
+      if (error instanceof BookException) {
+        return Response.error(
+          "Failed to find book: " + error.message,
+          400
+        ).send(res);
+      } else {
+        return Response.error("Internal server error", 500).send(res);
+      }
+    }
+  }
+
   async getAllBooks(req: Request, res: ExpressResponse): Promise<void> {
     logger.logFormatted("info", LoggerMessages.START_BOOK_FIND_ALL);
     try {
       const books = await this.findCase.execute();
 
-      let getBookDTO: GetBookDTO[];
+      var getBookDTO: GetBookDTO[];
 
       if (books.length > 0) {
         books.forEach((b) => {
@@ -130,7 +161,7 @@ export class BookController {
     try {
       const books = await this.findCase.executeAllByAuthor(author);
 
-      let getBookDTO: GetBookDTO[];
+      var getBookDTO: GetBookDTO[];
 
       if (books.length > 0) {
         books.forEach((b) => {

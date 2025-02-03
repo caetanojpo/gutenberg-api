@@ -19,4 +19,10 @@ export class FindBook {
     if (!book) return null;
     return book;
   }
+
+  async executeByGutenbergId(gutenbergId: string): Promise<IBook | null> {
+    const book = await this.repository.findByGutenbergId(gutenbergId);
+    if (!book) return null;
+    return book;
+  }
 }

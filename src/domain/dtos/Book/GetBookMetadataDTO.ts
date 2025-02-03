@@ -1,7 +1,9 @@
-export class GetBookMetadataDTO {
-  metadata: string;
+import { IMetadata } from "../../models/Book";
 
-  constructor(metadata: string) {
+export class GetBookMetadataDTO {
+  metadata: IMetadata;
+
+  constructor(metadata: IMetadata) {
     this.metadata = metadata;
   }
 }

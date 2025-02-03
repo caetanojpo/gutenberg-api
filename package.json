@@ -41,6 +41,7 @@
     "gutenberg-api": "file:",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.9.6",
+    "reflect-metadata": "^0.2.2",
     "winston": "^3.17.0"
   }
 }

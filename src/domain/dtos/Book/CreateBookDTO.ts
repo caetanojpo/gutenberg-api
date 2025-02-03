@@ -1,25 +1,30 @@
-import { IsString } from "class-validator";
+import { IsObject, IsString, ValidateNested } from "class-validator";
+import { IMetadata } from "../../models/Book";
+import { Type } from "class-transformer";
+import { MetadataDTO } from "./MetaDataDTO";
 
 export class CreateBookDTO {
   @IsString()
-  id: string;
+  gutenbergId: string;
   @IsString()
   title: string;
   @IsString()
   author: string;
   @IsString()
   coverPictureUrl: string;
-  @IsString()
-  metadata: string;
+  @IsObject()
+  @ValidateNested()
+  @Type(() => MetadataDTO)
+  metadata: IMetadata;
 
   constructor(
-    id: string,
+    gutenbergId: string,
     title: string,
     author: string,
     coverPictureUrl: string,
-    metadata: string
+    metadata: IMetadata
   ) {
-    this.id = id;
+    this.gutenbergId = gutenbergId;
     this.title = title;
     this.author = author;
     this.coverPictureUrl = coverPictureUrl;

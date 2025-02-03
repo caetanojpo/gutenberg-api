@@ -108,6 +108,12 @@ export abstract class LoggerMessages {
   public static readonly FINDING_BOOK_BY_ID = "Finding book by id: {}";
   public static readonly BOOK_NOT_FOUND_BY_ID = "Book not found with id: {}";
   public static readonly BOOK_FOUND_BY_ID = "Book found with id: {}";
+  public static readonly FINDING_BOOK_BY_GUTENBER_ID =
+    "Finding book by gutenberg id: {}";
+  public static readonly BOOK_NOT_FOUND_BY_GUTENBER_ID =
+    "Book not found with gutenberg id: {}";
+  public static readonly BOOK_FOUND_BY_GUTENBER_ID =
+    "Book found with gutenberg id: {}";
   public static readonly FINDING_ALL_BOOKS = "Finding all books";
   public static readonly FINDING_ALL_BOOKS_EMPTY =
     "Found 0 books. Empty entity.";
@@ -148,6 +154,8 @@ export abstract class LoggerMessages {
   public static readonly START_BOOK_CREATION =
     "Starting book creation with id: {}";
   public static readonly START_BOOK_FIND_BY_ID = "Starting book find by id: {}";
+  public static readonly START_BOOK_FIND_BY_GUTENBERG_ID =
+    "Starting book find by gutenberg id: {}";
   public static readonly START_BOOK_FIND_ALL = "Starting find all books";
   public static readonly START_BOOK_FIND_ALL_BY_AUTHOR =
     "Starting find all books by author: {}";

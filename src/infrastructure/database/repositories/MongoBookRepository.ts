@@ -90,9 +90,43 @@ export class MongoBookRepository implements IBookRepository {
     }
   }
 
+  async findByGutenbergId(gutenbergId: string): Promise<IBook | null> {
+    try {
+      logger.logFormatted(
+        "info",
+        LoggerMessages.FINDING_BOOK_BY_GUTENBER_ID,
+        gutenbergId
+      );
+      const bookDocument = await BookModel.findOne({ gutenbergId }).exec();
+
+      if (!bookDocument) {
+        logger.logFormatted(
+          "warn",
+          LoggerMessages.ENTITY_NOT_FOUND,
+          "Book",
+          gutenbergId
+        );
+        return null;
+      }
+
+      logger.logFormatted(
+        "info",
+        LoggerMessages.BOOK_FOUND_BY_GUTENBER_ID,
+        gutenbergId
+      );
+      return bookDocument;
+    } catch (error) {
+      logger.logFormatted("error", LoggerMessages.DB_ERROR_FINDING, error);
+      throw new DatabaseException(
+        `MongoDB error when trying to find book by id: ${error}`
+      );
+    }
+  }
+
   async save(book: IBook): Promise<IBook | null> {
     try {
       logger.logFormatted("info", LoggerMessages.SAVING_BOOK, book.title);
+
       const bookDocument = new BookModel(book);
       await bookDocument.save();
       logger.logFormatted("info", LoggerMessages.BOOK_SAVED, book.title);
