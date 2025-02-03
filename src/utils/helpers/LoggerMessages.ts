@@ -143,4 +143,15 @@ export abstract class LoggerMessages {
     "Starting user soft delete with id: {}";
   public static readonly START_USER_HARD_DELETE =
     "Starting user hard delete with id: {}";
+
+  // Book Controller
+  public static readonly START_BOOK_CREATION =
+    "Starting book creation with id: {}";
+  public static readonly START_BOOK_FIND_BY_ID = "Starting book find by id: {}";
+  public static readonly START_BOOK_FIND_ALL = "Starting find all books";
+  public static readonly START_BOOK_FIND_ALL_BY_AUTHOR =
+    "Starting find all books by author: {}";
+  public static readonly START_BOOK_UPDATE = "Starting book update with id: {}";
+  public static readonly START_BOOK_DELETE =
+    "Starting book soft delete with id: {}";
 }
