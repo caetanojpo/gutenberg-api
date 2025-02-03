@@ -162,4 +162,14 @@ export abstract class LoggerMessages {
   public static readonly START_BOOK_UPDATE = "Starting book update with id: {}";
   public static readonly START_BOOK_DELETE =
     "Starting book soft delete with id: {}";
+
+  //Gutenberg
+  public static readonly START_FETCHING_GUTENBERG_DATA =
+    "Starting gutenberg book data fetching id: {}";
+  public static readonly GUTENBERG_BOOK_ALREADY_FETCHED =
+    "The current book of id {} is already saved on MongoDB";
+  public static readonly GUTENBERG_BOOK_ERROR =
+    "Error when fetching the book of id {}";
+  public static readonly GUTENBERG_BOOK_SAVE_ERROR =
+    "Error when trying to save the book of id {}";
 }

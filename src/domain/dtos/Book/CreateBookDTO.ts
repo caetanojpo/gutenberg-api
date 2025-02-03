@@ -16,18 +16,21 @@ export class CreateBookDTO {
   @ValidateNested()
   @Type(() => MetadataDTO)
   metadata: IMetadata;
+  content?: string;
 
   constructor(
     gutenbergId: string,
     title: string,
     author: string,
     coverPictureUrl: string,
-    metadata: IMetadata
+    metadata: IMetadata,
+    content: string
   ) {
     this.gutenbergId = gutenbergId;
     this.title = title;
     this.author = author;
     this.coverPictureUrl = coverPictureUrl;
     this.metadata = metadata;
+    this.content = content;
   }
 }

@@ -53,6 +53,7 @@ export class BookMapper {
       author: createBookDTO.author,
       coverPictureUrl: createBookDTO.coverPictureUrl,
       metadata: createBookDTO.metadata,
+      content: createBookDTO.content || "",
     };
   }
 

@@ -12,6 +12,7 @@ import { Response } from "./utils/helpers/Response";
 import { LoggerMessages } from "./utils/helpers/LoggerMessages";
 import { logger } from "./infrastructure/logger";
 import bookRouter from "./adapters/routes/book.routes";
+import gutenbergRouter from "./adapters/routes/gutenberg.route";
 
 config();
 
@@ -25,6 +26,7 @@ connectDB();
 app.use("/users", userRouter);
 app.use("/auth", authRouter);
 app.use("/books", bookRouter);
+app.use("/gutenberg", gutenbergRouter);
 
 app.use((req: Request, res: ExpressResponse, next: NextFunction): void => {
   logger.logFormatted("error", LoggerMessages.ROUTE_NOT_FOUND, req.originalUrl);
