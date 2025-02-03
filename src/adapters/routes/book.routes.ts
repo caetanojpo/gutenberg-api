@@ -28,7 +28,9 @@ const bookController = new BookController(
   updateBook
 );
 
-bookRouter.post("", (req, res) => bookController.createBook(req, res));
+bookRouter.post("", authMiddleware(authService, findUser), (req, res) =>
+  bookController.createBook(req, res)
+);
 bookRouter.get("/:id", authMiddleware(authService, findUser), (req, res) =>
   bookController.getBookById(req, res)
 );
