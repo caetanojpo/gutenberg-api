@@ -9,11 +9,6 @@ const server = app.listen(env.port, () =>
   logger.logFormatted("info", LoggerMessages.SERVER_LISTENING, env.port)
 );
 
-// Default route
-app.get("/", (req, res) => {
-  res.send("Welcome to the Gutenberg API!");
-});
-
 const gracefulShutdown = async () => {
   logger.logFormatted("info", LoggerMessages.GRACEFUL_SHUTDOWN);
 

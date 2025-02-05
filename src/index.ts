@@ -13,6 +13,7 @@ import { LoggerMessages } from "./utils/helpers/LoggerMessages";
 import { logger } from "./infrastructure/logger";
 import bookRouter from "./adapters/routes/book.routes";
 import gutenbergRouter from "./adapters/routes/gutenberg.route";
+import groqRouter from "./adapters/routes/groq.route";
 
 config();
 
@@ -27,6 +28,7 @@ app.use("/users", userRouter);
 app.use("/auth", authRouter);
 app.use("/books", bookRouter);
 app.use("/gutenberg", gutenbergRouter);
+app.use("/llm", groqRouter);
 
 // Default route
 app.get("/", (req, res) => {

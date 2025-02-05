@@ -1,0 +1,5 @@
+export enum LLMAction {
+  KEYWORDS = "KEYWORDS",
+  SUMMARY = "SUMMARY",
+  SENTIMENT = "SENTIMENT",
+}

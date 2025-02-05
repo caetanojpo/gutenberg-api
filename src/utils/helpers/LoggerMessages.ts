@@ -172,4 +172,9 @@ export abstract class LoggerMessages {
     "Error when fetching the book of id {}";
   public static readonly GUTENBERG_BOOK_SAVE_ERROR =
     "Error when trying to save the book of id {}";
+
+  //Groq
+  public static readonly START_GROQ_PROCESS = "Starting groq request process";
+  public static readonly GROQ_PROCESS_ERROR =
+    "Error when processing your groq request. Prompt: {}";
 }

@@ -16,4 +16,5 @@ export const env = {
   dbUri: process.env.DB_URI || "mongodb://localhost:27017",
   url: isProd ? process.env.PROD_API_URL : process.env.DEV_API_URL,
   jwtSecret: process.env.JWT_SECRET || "",
+  groqKey: process.env.GROQ_KEY || "",
 };
