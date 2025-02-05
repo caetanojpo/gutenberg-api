@@ -28,6 +28,15 @@ app.use("/auth", authRouter);
 app.use("/books", bookRouter);
 app.use("/gutenberg", gutenbergRouter);
 
+// Default route
+app.get("/", (req, res) => {
+  res.send("Welcome to the Gutenberg API!");
+});
+
+app.head("/", (req, res) => {
+  res.sendStatus(200);
+});
+
 app.use((req: Request, res: ExpressResponse, next: NextFunction): void => {
   logger.logFormatted("error", LoggerMessages.ROUTE_NOT_FOUND, req.originalUrl);
   Response.error(`Route ${req.method} ${req.originalUrl} not found`, 404).send(
