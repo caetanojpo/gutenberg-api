@@ -6,6 +6,7 @@ import { LoggerMessages } from "../../utils/helpers/LoggerMessages";
 export const connectDB = async () => {
   try {
     logger.logFormatted("info", LoggerMessages.DB_CONNECTING);
+    logger.info("Mongo connection: " + env.dbUri);
     await mongoose.connect(env.dbUri);
     logger.logFormatted("info", LoggerMessages.DB_CONNECTED);
   } catch (error) {
